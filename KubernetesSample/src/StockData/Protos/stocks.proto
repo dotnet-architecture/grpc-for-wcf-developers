@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "StockData.Protos";
+
+package StockData;
+
+service Stocks {
+  rpc Get (GetRequest) returns (GetResponse);
+}
+
+message GetRequest {
+  int32 id = 1;
+}
+
+message GetResponse {
+    Stock stock = 1;
+}
+
+message Stock {
+    int32 id = 1;
+    string symbol = 2;
+    string name = 3;
+}

@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29311.281
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9C29E634-9A63-4A94-A2F3-AA9E97A4F386}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockData", "src\StockData\StockData.csproj", "{46F80C8A-0DE5-4425-BDE2-389421D2E238}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockWeb", "src\StockWeb\StockWeb.csproj", "{55B57165-F959-4A40-8E71-12713CCCEB10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kubernetes", "kubernetes", "{4974CFDD-6B8F-49B4-A02B-10D136CB2CB3}"
+	ProjectSection(SolutionItems) = preProject
+		kubernetes\namespace.yml = kubernetes\namespace.yml
+		kubernetes\stockdata-with-mesh.yml = kubernetes\stockdata-with-mesh.yml
+		kubernetes\stockdata.yml = kubernetes\stockdata.yml
+		kubernetes\stockweb-with-mesh.yml = kubernetes\stockweb-with-mesh.yml
+		kubernetes\stockweb.yml = kubernetes\stockweb.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Debug|x64.Build.0 = Debug|Any CPU
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Debug|x86.Build.0 = Debug|Any CPU
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Release|x64.ActiveCfg = Release|Any CPU
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Release|x64.Build.0 = Release|Any CPU
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Release|x86.ActiveCfg = Release|Any CPU
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238}.Release|x86.Build.0 = Release|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Debug|x64.Build.0 = Debug|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Debug|x86.Build.0 = Debug|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Release|x64.ActiveCfg = Release|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Release|x64.Build.0 = Release|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Release|x86.ActiveCfg = Release|Any CPU
+		{55B57165-F959-4A40-8E71-12713CCCEB10}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46F80C8A-0DE5-4425-BDE2-389421D2E238} = {9C29E634-9A63-4A94-A2F3-AA9E97A4F386}
+		{55B57165-F959-4A40-8E71-12713CCCEB10} = {9C29E634-9A63-4A94-A2F3-AA9E97A4F386}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D3372AF-E389-479E-B669-31179BF9304A}
+	EndGlobalSection
+EndGlobal

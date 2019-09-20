@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stockweb
+  namespace: stocks
+spec:
+  selector:
+    matchLabels:
+      run: stockweb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: stockweb
+    spec:
+      containers:
+      - name: stockweb
+        image: stockweb:1.0.0
+        imagePullPolicy: Never
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 80
+        env:
+        - name: StockData__Address
+          value: "http://stockdata"
+        - name: DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_HTTP2UNENCRYPTEDSUPPORT
+          value: "true"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: stockweb
+  namespace: stocks
+spec:
+  type: NodePort 
+  ports:
+  - port: 80
+  selector:
+    run: stockweb

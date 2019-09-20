@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "TraderSys.SimpleStockTickerServer.Protos";
+
+import "google/protobuf/timestamp.proto";
+
+package SimpleStockTickerServer;
+
+service SimpleStockTicker {
+  rpc Subscribe (SubscribeRequest) returns (stream StockTickerUpdate);
+}
+
+message SubscribeRequest {
+  repeated string symbols = 1;
+}
+
+message StockTickerUpdate {
+  string symbol = 1;
+  double price = 2;
+  google.protobuf.Timestamp time = 3;
+}

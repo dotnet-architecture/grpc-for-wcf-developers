@@ -1,0 +1,5 @@
+﻿<%@ ServiceHost Language="C#" Debug="true"
+    Service="TraderSys.PortfolioService, TraderSys"
+    CodeBehind="PortfolioService.svc.cs"
+    Factory="Autofac.Integration.Wcf.AutofacServiceHostFactory, Autofac.Integration.Wcf"
+%>

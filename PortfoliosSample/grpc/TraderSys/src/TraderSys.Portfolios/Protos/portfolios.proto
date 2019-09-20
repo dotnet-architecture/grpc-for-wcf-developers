@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "TraderSys.Portfolios.Protos";
+
+package PortfolioService;
+
+message PortfolioItem {
+    int32 id = 1;
+    int32 shareId = 2;
+    int32 holding = 3;
+    double cost = 4;
+}
+
+message Portfolio {
+    int32 id = 1;
+    string traderId = 2;
+    repeated PortfolioItem items = 3;
+}
+
+message GetRequest {
+    string traderId = 1;
+    int32 portfolioId = 2;
+}
+
+message GetResponse {
+    Portfolio portfolio = 1;
+}
+
+message GetAllRequest {
+    string traderId = 1;
+}
+
+message GetAllResponse {
+    repeated Portfolio portfolios = 1;
+}
+
+service Portfolios {
+    rpc Get(GetRequest) returns (GetResponse);
+    rpc GetAll(GetAllRequest) returns (GetAllResponse);
+}

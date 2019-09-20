@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraderSys.StockMarket", "TraderSys.StockMarket\TraderSys.StockMarket.csproj", "{FE07B0B4-FB08-461F-935C-8A21F4A40919}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullStockPriceTickerServer", "FullStockPriceTickerServer\FullStockPriceTickerServer.csproj", "{25574216-9127-43CF-9AB8-87ACD621240E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullStockPriceTickerClient", "FullStockPriceTickerClient\FullStockPriceTickerClient.csproj", "{3D734807-DF5E-4A8E-9DAB-A4001820467F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE07B0B4-FB08-461F-935C-8A21F4A40919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE07B0B4-FB08-461F-935C-8A21F4A40919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE07B0B4-FB08-461F-935C-8A21F4A40919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE07B0B4-FB08-461F-935C-8A21F4A40919}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25574216-9127-43CF-9AB8-87ACD621240E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25574216-9127-43CF-9AB8-87ACD621240E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25574216-9127-43CF-9AB8-87ACD621240E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25574216-9127-43CF-9AB8-87ACD621240E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D734807-DF5E-4A8E-9DAB-A4001820467F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D734807-DF5E-4A8E-9DAB-A4001820467F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D734807-DF5E-4A8E-9DAB-A4001820467F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D734807-DF5E-4A8E-9DAB-A4001820467F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {041909B6-3383-48E3-9810-E5D9B73FD026}
+	EndGlobalSection
+EndGlobal

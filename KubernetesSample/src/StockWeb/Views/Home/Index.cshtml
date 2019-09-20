@@ -1,0 +1,33 @@
+﻿@model IndexViewModel
+@{
+  ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+  <h1 class="display-4">NASDAQ 100</h1>
+</div>
+<div class="row">
+  <div class="col-8 offset-2 col-sm-12">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Server</th>
+      </tr>
+      </thead>
+      <tbody>
+      @foreach (var stock in Model.Stocks)
+      {
+        <tr>
+        <td>@stock.Symbol</td>
+        <td>@stock.Name</td>
+        <td>@stock.ServerId</td>
+        </tr>
+      }
+      </tbody>
+    </table>
+    <ul>
+    </ul>
+  </div>
+</div>

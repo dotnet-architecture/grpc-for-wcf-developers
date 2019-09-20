@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="client.pfx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="client.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.0.0-preview8.19405.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TraderSys.FullStockTicker.Client\TraderSys.FullStockTicker.Client.csproj" />
+  </ItemGroup>
+
+</Project>

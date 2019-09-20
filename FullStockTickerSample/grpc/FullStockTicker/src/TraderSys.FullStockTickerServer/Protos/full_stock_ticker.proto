@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "TraderSys.FullStockTickerServer.Protos";
+
+import "google/protobuf/timestamp.proto";
+
+package FullStockTickerServer;
+
+service FullStockTicker {
+  rpc Subscribe (stream ActionMessage) returns (stream StockTickerUpdate);
+}
+
+message ActionMessage {
+  oneof action {
+    AddSymbolRequest add = 1;
+    RemoveSymbolRequest remove = 2;
+  }
+}
+
+message AddSymbolRequest {
+  string symbol = 1;
+}
+
+message RemoveSymbolRequest {
+  string symbol = 1;
+}
+
+message StockTickerUpdate {
+  string symbol = 1;
+  double price = 2;
+  google.protobuf.Timestamp time = 3;
+}

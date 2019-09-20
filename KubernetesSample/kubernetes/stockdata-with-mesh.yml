@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: stockdata
+  namespace: stocks
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: stockdata
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      creationTimestamp: null
+      labels:
+        run: stockdata
+    spec:
+      containers:
+      - image: stockdata:1.0.0
+        imagePullPolicy: Never
+        name: stockdata
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+status: {}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: stockdata
+  namespace: stocks
+spec:
+  ports:
+  - port: 80
+  selector:
+    run: stockdata
+---
