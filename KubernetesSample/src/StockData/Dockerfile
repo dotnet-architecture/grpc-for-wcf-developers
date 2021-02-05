@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0 as build
+FROM mcr.microsoft.com/dotnet/sdk:5.0.102-ca-patch-buster-slim as build
 
-WORKDIR /build
+WORKDIR /src
 
-COPY ./Kubed.sln .
+COPY ./StockKube.sln .
 COPY ./src/StockData/StockData.csproj ./src/StockData/
 COPY ./src/StockWeb/StockWeb.csproj ./src/StockWeb/
 
@@ -12,7 +12,7 @@ COPY . .
 
 RUN dotnet publish --no-restore -c Release -o /published src/StockData/StockData.csproj
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 as runtime
 
 WORKDIR /app
 
