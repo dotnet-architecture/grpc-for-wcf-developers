@@ -1,0 +1,15 @@
+﻿global using Google.Protobuf.WellKnownTypes;
+global using Grpc.Core;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Hosting;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Logging;
+global using System;
+global using System.Linq;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using TraderSys.SimpleStockTickerServer.Protos;
+global using TraderSys.SimpleStockTickerServer.Services;
+global using TraderSys.StockMarket;
