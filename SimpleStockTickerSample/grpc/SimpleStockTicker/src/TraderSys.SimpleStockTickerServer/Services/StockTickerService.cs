@@ -1,15 +1,5 @@
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
-using Microsoft.Extensions.Logging;
-using TraderSys.SimpleStockTickerServer.Protos;
-using TraderSys.StockMarket;
 
-namespace TraderSys.SimpleStockTickerServer.Services
-{
+namespace TraderSys.SimpleStockTickerServer.Services;
     public class StockTickerService : Protos.SimpleStockTicker.SimpleStockTickerBase
     {
         private readonly IStockPriceSubscriberFactory _subscriberFactory;
@@ -62,4 +52,3 @@ namespace TraderSys.SimpleStockTickerServer.Services
             return completion.Task;
         }
     }
-}
