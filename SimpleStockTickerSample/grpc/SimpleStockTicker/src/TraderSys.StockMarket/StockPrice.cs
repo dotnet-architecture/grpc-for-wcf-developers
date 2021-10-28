@@ -1,5 +1,3 @@
-using System;
-
 namespace TraderSys.StockMarket;
 internal class StockPrice : IEquatable<StockPrice>
 {

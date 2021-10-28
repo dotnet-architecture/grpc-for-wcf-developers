@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TraderSys.StockMarket;
+﻿namespace TraderSys.StockMarket;
 public class StockPriceUpdateEventArgs : EventArgs
 {
     public StockPriceUpdateEventArgs(string symbol, decimal price)
