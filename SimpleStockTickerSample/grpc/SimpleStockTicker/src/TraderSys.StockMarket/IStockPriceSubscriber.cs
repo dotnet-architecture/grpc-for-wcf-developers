@@ -1,11 +1,7 @@
 using System;
 
-namespace TraderSys.StockMarket
+namespace TraderSys.StockMarket;
+public interface IStockPriceSubscriber : IDisposable
 {
-    public interface IStockPriceSubscriber : IDisposable
-    {
-        event EventHandler<StockPriceUpdateEventArgs> Update;
-    }
-
-
+    event EventHandler<StockPriceUpdateEventArgs> Update;
 }
