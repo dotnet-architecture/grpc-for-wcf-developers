@@ -1,14 +1,3 @@
-using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
-using Grpc.Core;
-using TraderSys.FullStockTickerClientApp.Annotations;
-using TraderSys.FullStockTickerServer.Protos;
-
 namespace TraderSys.FullStockTickerClientApp;
 public class MainWindowViewModel : IAsyncDisposable, INotifyPropertyChanged
 {
