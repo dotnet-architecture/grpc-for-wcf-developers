@@ -1,4 +1,3 @@
-using System;
 
 namespace TraderSys.StockMarket;
 public interface IFullStockPriceSubscriber : IDisposable

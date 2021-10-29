@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace TraderSys.StockMarket;
 public class StockPriceUpdateEventArgs : EventArgs
 {
