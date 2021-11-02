@@ -1,9 +1,7 @@
 using System;
 
-namespace TraderSys.Portfolios
+namespace TraderSys.Portfolios;
+public interface IUserLookup
 {
-    public interface IUserLookup
-    {
-        bool TryGetId(string name, out Guid guid);
-    }
+    bool TryGetId(string name, out Guid guid);
 }

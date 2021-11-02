@@ -9,59 +9,57 @@ using Microsoft.IdentityModel.Tokens;
 using TraderSys.PortfolioData;
 using TraderSys.Portfolios.Services;
 
-namespace TraderSys.Portfolios
+namespace TraderSys.Portfolios;
+public class Startup
 {
-    public class Startup
+    public void ConfigureServices(IServiceCollection services)
     {
-        public void ConfigureServices(IServiceCollection services)
+        services.AddScoped<IPortfolioRepository, PortfolioRepository>();
+        services.AddSingleton<IUserLookup, UserLookup>();
+        services.AddGrpc();
+
+        services.AddAuthorization(options =>
         {
-            services.AddScoped<IPortfolioRepository, PortfolioRepository>();
-            services.AddSingleton<IUserLookup, UserLookup>();
-            services.AddGrpc();
-            
-            services.AddAuthorization(options =>
+            options.AddPolicy(JwtBearerDefaults.AuthenticationScheme, policy =>
             {
-                options.AddPolicy(JwtBearerDefaults.AuthenticationScheme, policy =>
-                {
-                    policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
-                    policy.RequireClaim(ClaimTypes.Name);
-                });
+                policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
+                policy.RequireClaim(ClaimTypes.Name);
             });
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters =
-                        new TokenValidationParameters
-                        {
-                            ValidateAudience = false,
-                            ValidateIssuer = false,
-                            ValidateActor = false,
-                            ValidateLifetime = true,
-                            IssuerSigningKey = JwtHelper.SecurityKey
-                        };
-                });
+        });
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters =
+                    new TokenValidationParameters
+                    {
+                        ValidateAudience = false,
+                        ValidateIssuer = false,
+                        ValidateActor = false,
+                        ValidateLifetime = true,
+                        IssuerSigningKey = JwtHelper.SecurityKey
+                    };
+            });
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        app.UseRouting();
+
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints =>
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            endpoints.MapGrpcService<PortfolioService>();
 
-            app.UseRouting();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGrpcService<PortfolioService>();
-
-                endpoints.MapGet("/generateJwtToken", context =>
-                    context.Response.WriteAsync(JwtHelper.GenerateJwtToken(context.Request.Query["name"])));
-            });
-        }
+            endpoints.MapGet("/generateJwtToken", context =>
+                context.Response.WriteAsync(JwtHelper.GenerateJwtToken(context.Request.Query["name"])));
+        });
     }
 }
