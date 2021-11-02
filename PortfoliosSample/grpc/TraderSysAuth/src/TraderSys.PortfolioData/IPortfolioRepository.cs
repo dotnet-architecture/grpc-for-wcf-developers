@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using TraderSys.PortfolioData.Models;
 
 namespace TraderSys.PortfolioData;
 public interface IPortfolioRepository

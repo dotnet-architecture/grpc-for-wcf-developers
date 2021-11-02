@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TraderSys.PortfolioData.Models;
-
+﻿
 namespace TraderSys.PortfolioData;
 public class PortfolioRepository : IPortfolioRepository
 {

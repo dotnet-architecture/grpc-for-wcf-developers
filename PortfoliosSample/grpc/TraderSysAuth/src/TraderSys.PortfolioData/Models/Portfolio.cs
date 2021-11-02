@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 
 namespace TraderSys.PortfolioData.Models;
 public class Portfolio
