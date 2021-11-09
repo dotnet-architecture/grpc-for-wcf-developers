@@ -17,7 +17,6 @@ namespace TraderSys.Portfolios.Services
             _repository = repository;
         }
 
-        [Authorize]
         public override async Task<GetResponse> Get(GetRequest request, ServerCallContext context)
         {
             if (!Guid.TryParse(request.TraderId, out var traderId))
