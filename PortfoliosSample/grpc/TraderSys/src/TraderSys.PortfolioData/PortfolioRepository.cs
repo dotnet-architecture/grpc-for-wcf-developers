@@ -4,9 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TraderSys.PortfolioData.Models;
 
-namespace TraderSys.PortfolioData
-{
-    public class PortfolioRepository : IPortfolioRepository
+namespace TraderSys.PortfolioData;
+public class PortfolioRepository : IPortfolioRepository
 {
     public Task<Portfolio> GetAsync(Guid traderId, int portfolioId)
     {
@@ -52,6 +51,4 @@ namespace TraderSys.PortfolioData
             };
         }
     }
-}
-
 }
