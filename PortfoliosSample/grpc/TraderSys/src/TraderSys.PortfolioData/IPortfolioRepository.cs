@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using TraderSys.PortfolioData.Models;
 
-namespace TraderSys.PortfolioData
+namespace TraderSys.PortfolioData;
+public interface IPortfolioRepository
 {
-    public interface IPortfolioRepository
-    {
-        Task<Portfolio> GetAsync(Guid traderId, int portfolioId);
-        Task<List<Portfolio>> GetAllAsync(Guid traderId);
-    }
+    Task<Portfolio> GetAsync(Guid traderId, int portfolioId);
+    Task<List<Portfolio>> GetAllAsync(Guid traderId);
 }
