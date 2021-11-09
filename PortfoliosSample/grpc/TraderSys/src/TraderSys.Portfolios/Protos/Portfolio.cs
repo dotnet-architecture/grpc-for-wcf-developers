@@ -1,4 +1,3 @@
-using System.Linq;
 
 namespace TraderSys.Portfolios.Protos;
 public partial class Portfolio

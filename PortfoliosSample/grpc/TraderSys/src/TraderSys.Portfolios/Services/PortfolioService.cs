@@ -1,10 +1,3 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Grpc.Core;
-using Microsoft.AspNetCore.Authorization;
-using TraderSys.PortfolioData;
-using TraderSys.Portfolios.Protos;
 
 namespace TraderSys.Portfolios.Services;
 public class PortfolioService : Protos.Portfolios.PortfoliosBase

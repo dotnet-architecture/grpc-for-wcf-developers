@@ -1,4 +1,3 @@
-using System;
 
 namespace TraderSys.Portfolios.Protos;
 public partial class PortfolioItem
