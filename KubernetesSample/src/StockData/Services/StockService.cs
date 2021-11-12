@@ -1,11 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using Grpc.Core;
-using Microsoft.Extensions.Logging;
-using StockData.Data;
-using StockData.Protos;
 
 namespace StockData.Services;
 public class StockData : Stocks.StocksBase

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace StockData.Data;
 public interface IStockRepository

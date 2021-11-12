@@ -1,4 +1,3 @@
-using System.Threading;
 
 namespace StockData.Data;
 public class Stock
