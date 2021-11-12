@@ -1,22 +1,18 @@
-using System;
-using System.Threading.Tasks;
 
-namespace TraderSys.FullStockTickerClientApp
+namespace TraderSys.FullStockTickerClientApp;
+public static class TaskUtilities
 {
-    public static class TaskUtilities
-    {
 #pragma warning disable RECS0165 // Asynchronous methods should return a Task instead of void
-        public static async void FireAndForgetSafeAsync(this Task task, Action<Exception> handler = null)
+    public static async void FireAndForgetSafeAsync(this Task task, Action<Exception> handler = null)
 #pragma warning restore RECS0165 // Asynchronous methods should return a Task instead of void
+    {
+        try
         {
-            try
-            {
-                await task;
-            }
-            catch (Exception ex)
-            {
-                handler?.Invoke(ex);
-            }
+            await task;
+        }
+        catch (Exception ex)
+        {
+            handler?.Invoke(ex);
         }
     }
 }

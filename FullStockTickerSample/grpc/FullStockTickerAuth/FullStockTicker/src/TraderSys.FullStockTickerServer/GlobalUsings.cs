@@ -1,0 +1,20 @@
+﻿global using Google.Protobuf.WellKnownTypes;
+global using Grpc.Core;
+global using Microsoft.AspNetCore.Authentication.Certificate;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Hosting;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Server.Kestrel.Https;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Logging;
+global using System;
+global using System.IO;
+global using System.Security.Claims;
+global using System.Security.Cryptography.X509Certificates;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using TraderSys.FullStockTickerServer.Protos;
+global using TraderSys.FullStockTickerServer.Services;
+global using TraderSys.StockMarket;
+
