@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace TraderSys.FullStockTickerClientApp;
 /// <summary>
 /// Interaction logic for MainWindow.xaml

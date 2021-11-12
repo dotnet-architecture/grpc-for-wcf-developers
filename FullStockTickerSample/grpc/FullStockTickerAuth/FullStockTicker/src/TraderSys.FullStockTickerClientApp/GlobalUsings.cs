@@ -1,0 +1,15 @@
+﻿global using Grpc.Core;
+global using Microsoft.Extensions.DependencyInjection;
+global using System;
+global using System.Collections.ObjectModel;
+global using System.ComponentModel;
+global using System.Linq;
+global using System.Net.Http;
+global using System.Runtime.CompilerServices;
+global using System.Security.Cryptography.X509Certificates;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using System.Windows;
+global using System.Windows.Input;
+global using TraderSys.FullStockTickerClientApp.Annotations;
+global using TraderSys.FullStockTickerServer.Protos;

@@ -1,12 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Net.Http;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows;
-using Grpc.Core;
-using Grpc.Net.Client;
-using Microsoft.Extensions.DependencyInjection;
-
+﻿
 namespace TraderSys.FullStockTickerClientApp;
 /// <summary>
 /// Interaction logic for App_OnStartup
