@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0 as build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 as build
 
 WORKDIR /src
 
@@ -12,7 +12,7 @@ COPY . .
 
 RUN dotnet publish --no-restore -c Release -o /published src/StockWeb/StockWeb.csproj
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 as runtime
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 as runtime
 
 WORKDIR /app
 

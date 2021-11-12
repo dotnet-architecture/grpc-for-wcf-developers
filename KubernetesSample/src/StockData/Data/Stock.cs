@@ -1,20 +1,17 @@
-using System.Threading;
 
-namespace StockData.Data
+namespace StockData.Data;
+public class Stock
 {
-    public class Stock
-    {
-        private static int _nextId = 1;
-        
-        public Stock(string symbol, string name)
-        {
-            Id = Interlocked.Increment(ref _nextId);
-            Symbol = symbol;
-            Name = name;
-        }
+    private static int _nextId = 1;
 
-        public int Id { get; }
-        public string Symbol { get; }
-        public string Name { get; }
+    public Stock(string symbol, string name)
+    {
+        Id = Interlocked.Increment(ref _nextId);
+        Symbol = symbol;
+        Name = name;
     }
+
+    public int Id { get; }
+    public string Symbol { get; }
+    public string Name { get; }
 }
