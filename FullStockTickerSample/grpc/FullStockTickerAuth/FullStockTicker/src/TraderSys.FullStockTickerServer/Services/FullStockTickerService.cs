@@ -1,12 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
-using Microsoft.Extensions.Logging;
-using TraderSys.FullStockTickerServer.Protos;
-using TraderSys.StockMarket;
-
+﻿
 namespace TraderSys.FullStockTickerServer.Services;
 public class FullStockTickerService : Protos.FullStockTicker.FullStockTickerBase
 {
