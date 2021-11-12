@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-using Grpc.Core;
 
 namespace StockWeb.Internal;
 public static class MetadataExtensions

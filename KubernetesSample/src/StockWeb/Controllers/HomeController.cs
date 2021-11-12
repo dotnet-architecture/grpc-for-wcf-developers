@@ -1,13 +1,4 @@
-﻿using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Grpc.Core;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using StockData.Protos;
-using StockWeb.Internal;
-using StockWeb.Models;
-
+﻿
 namespace StockWeb.Controllers;
 public class HomeController : Controller
 {

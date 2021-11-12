@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using StockData.Protos;
 
 namespace StockWeb.Models;
 public class IndexViewModel

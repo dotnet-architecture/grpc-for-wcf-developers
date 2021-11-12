@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 
 namespace StockWeb.Models;
 public class ErrorViewModel
