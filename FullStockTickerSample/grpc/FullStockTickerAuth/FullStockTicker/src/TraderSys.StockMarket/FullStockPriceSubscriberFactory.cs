@@ -1,10 +1,8 @@
-namespace TraderSys.StockMarket
+namespace TraderSys.StockMarket;
+public class FullStockPriceSubscriberFactory : IFullStockPriceSubscriberFactory
 {
-    public class FullStockPriceSubscriberFactory : IFullStockPriceSubscriberFactory
+    public IFullStockPriceSubscriber GetSubscriber()
     {
-        public IFullStockPriceSubscriber GetSubscriber()
-        {
-            return new FullStockPriceSubscriber();
-        }
+        return new FullStockPriceSubscriber();
     }
 }
