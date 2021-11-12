@@ -2,23 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockData.Data
+namespace StockData.Data;
+public interface IStockRepository
 {
-    public interface IStockRepository
+    Task<Stock> GetAsync(int id);
+}
+
+public class DummyStockRepository : IStockRepository
+{
+    public Task<Stock> GetAsync(int id)
     {
-        Task<Stock> GetAsync(int id);
+        if (id < 1) throw new ArgumentOutOfRangeException();
+        if (id > Stocks.Count) return Task.FromResult((Stock)null);
+        return Task.FromResult(Stocks[id - 1]);
     }
 
-    public class DummyStockRepository : IStockRepository
-    {
-        public Task<Stock> GetAsync(int id)
-        {
-            if (id < 1) throw new ArgumentOutOfRangeException();
-            if (id > Stocks.Count) return Task.FromResult((Stock) null);
-            return Task.FromResult(Stocks[id - 1]);
-        }
-
-        private static readonly List<Stock> Stocks = new List<Stock>
+    private static readonly List<Stock> Stocks = new List<Stock>
         {
             new Stock("ATVI", "Activision Blizzard Inc"),
             new Stock("ADBE", "Adobe Inc."),
@@ -121,5 +120,4 @@ namespace StockData.Data
             new Stock("XEL", "Xcel Energy Inc"),
             new Stock("XLNX", "Xilinx Inc"),
         };
-    }
 }
