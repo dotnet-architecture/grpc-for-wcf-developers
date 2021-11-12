@@ -9,97 +9,95 @@ using Grpc.Core;
 using TraderSys.FullStockTickerClientApp.Annotations;
 using TraderSys.FullStockTickerServer.Protos;
 
-namespace TraderSys.FullStockTickerClientApp
+namespace TraderSys.FullStockTickerClientApp;
+public class MainWindowViewModel : IAsyncDisposable, INotifyPropertyChanged
 {
-    public class MainWindowViewModel : IAsyncDisposable, INotifyPropertyChanged
+    private readonly FullStockTicker.FullStockTickerClient _client;
+    private readonly AsyncDuplexStreamingCall<ActionMessage, StockTickerUpdate> _duplexStream;
+    private readonly CancellationTokenSource _cancellationTokenSource;
+    private readonly Task _responseTask;
+    private string _addSymbol;
+
+    public MainWindowViewModel(FullStockTicker.FullStockTickerClient client)
     {
-        private readonly FullStockTicker.FullStockTickerClient _client;
-        private readonly AsyncDuplexStreamingCall<ActionMessage, StockTickerUpdate> _duplexStream;
-        private readonly CancellationTokenSource _cancellationTokenSource;
-        private readonly Task _responseTask;
-        private string _addSymbol;
+        _cancellationTokenSource = new CancellationTokenSource();
+        _client = client;
+        _duplexStream = _client.Subscribe();
+        _responseTask = HandleResponsesAsync(_cancellationTokenSource.Token);
 
-        public MainWindowViewModel(FullStockTicker.FullStockTickerClient client)
+        AddCommand = new AsyncCommand(Add, CanAdd);
+    }
+
+    public IAsyncCommand AddCommand { get; }
+
+    public string AddSymbol
+    {
+        get => _addSymbol;
+        set
         {
-            _cancellationTokenSource = new CancellationTokenSource();
-            _client = client;
-            _duplexStream = _client.Subscribe();
-            _responseTask = HandleResponsesAsync(_cancellationTokenSource.Token);
-            
-            AddCommand = new AsyncCommand(Add, CanAdd);
+            if (value == _addSymbol) return;
+            _addSymbol = value;
+            AddCommand.RaiseCanExecuteChanged();
+            OnPropertyChanged();
         }
-        
-        public IAsyncCommand AddCommand { get; }
+    }
 
-        public string AddSymbol
+    public ObservableCollection<PriceViewModel> Prices { get; } = new ObservableCollection<PriceViewModel>();
+
+    private bool CanAdd() => !string.IsNullOrWhiteSpace(AddSymbol);
+
+    private async Task Add()
+    {
+        if (CanAdd())
         {
-            get => _addSymbol;
-            set
+            await _duplexStream.RequestStream.WriteAsync(new ActionMessage { Add = new AddSymbolRequest { Symbol = AddSymbol } });
+        }
+    }
+
+    public async Task Remove(PriceViewModel priceViewModel)
+    {
+        await _duplexStream.RequestStream.WriteAsync(new ActionMessage { Remove = new RemoveSymbolRequest { Symbol = priceViewModel.Symbol } });
+        Prices.Remove(priceViewModel);
+    }
+
+    private async Task HandleResponsesAsync(CancellationToken token)
+    {
+        var stream = _duplexStream.ResponseStream;
+
+        await foreach (var update in stream.ReadAllAsync(token))
+        {
+            var price = Prices.FirstOrDefault(p => p.Symbol.Equals(update.Symbol));
+            if (price == null)
             {
-                if (value == _addSymbol) return;
-                _addSymbol = value;
-                AddCommand.RaiseCanExecuteChanged();
-                OnPropertyChanged();
+                price = new PriceViewModel(this) { Symbol = update.Symbol, Price = Convert.ToDecimal(update.Price) };
+                Prices.Add(price);
+            }
+            else
+            {
+                price.Price = Convert.ToDecimal(update.Price);
             }
         }
+    }
 
-        public ObservableCollection<PriceViewModel> Prices { get; } = new ObservableCollection<PriceViewModel>();
-
-        private bool CanAdd() => !string.IsNullOrWhiteSpace(AddSymbol);
-
-        private async Task Add()
+    public async ValueTask DisposeAsync()
+    {
+        _cancellationTokenSource.Cancel();
+        try
         {
-            if (CanAdd())
-            {
-                await _duplexStream.RequestStream.WriteAsync(new ActionMessage {Add = new AddSymbolRequest {Symbol = AddSymbol}});
-            }
+            await _duplexStream.RequestStream.CompleteAsync().ConfigureAwait(false);
+            await _responseTask.ConfigureAwait(false);
         }
-
-        public async Task Remove(PriceViewModel priceViewModel)
+        finally
         {
-            await _duplexStream.RequestStream.WriteAsync(new ActionMessage {Remove = new RemoveSymbolRequest {Symbol = priceViewModel.Symbol}});
-            Prices.Remove(priceViewModel);
+            _duplexStream.Dispose();
         }
+    }
 
-        private async Task HandleResponsesAsync(CancellationToken token)
-        {
-            var stream = _duplexStream.ResponseStream;
-            
-            await foreach(var update in stream.ReadAllAsync(token))
-            {
-                var price = Prices.FirstOrDefault(p => p.Symbol.Equals(update.Symbol));
-                if (price == null)
-                {
-                    price = new PriceViewModel(this) {Symbol = update.Symbol, Price = Convert.ToDecimal(update.Price)};
-                    Prices.Add(price);
-                }
-                else
-                {
-                    price.Price = Convert.ToDecimal(update.Price);
-                }
-            }
-        }
+    public event PropertyChangedEventHandler PropertyChanged;
 
-        public async ValueTask DisposeAsync()
-        {
-            _cancellationTokenSource.Cancel();
-            try
-            {
-                await _duplexStream.RequestStream.CompleteAsync().ConfigureAwait(false);
-                await _responseTask.ConfigureAwait(false);
-            }
-            finally
-            {
-                _duplexStream.Dispose();
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+    [NotifyPropertyChangedInvocator]
+    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
