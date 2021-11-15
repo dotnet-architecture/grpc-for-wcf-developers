@@ -1,8 +1,5 @@
-namespace TraderSys.StockMarket
+namespace TraderSys.StockMarket;
+public interface IStockPriceSubscriberFactory
 {
-    public interface IStockPriceSubscriberFactory
-    {
-        IStockPriceSubscriber GetSubscriber(string[] symbols);
-    }
-
+    IStockPriceSubscriber GetSubscriber(string[] symbols);
 }

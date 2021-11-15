@@ -1,0 +1,16 @@
+﻿global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Hosting;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.IdentityModel.Tokens;
+global using System;
+global using System.Collections.Generic;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.IO;
+global using System.Linq;
+global using System.Security.Claims;
+global using System.Threading.Tasks;
+global using TraderSys.PortfolioData;
+global using TraderSys.Portfolios.Services;

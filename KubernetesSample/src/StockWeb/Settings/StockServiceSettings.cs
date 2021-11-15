@@ -1,7 +1,5 @@
-namespace StockWeb.Settings
+namespace StockWeb.Settings;
+public class StockDataSettings
 {
-    public class StockDataSettings
-    {
-        public string Address { get; set; }
-    }
+    public string Address { get; set; }
 }
