@@ -9,10 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.34.0-pre1" />
-    <PackageReference Include="Grpc.Net.Common" Version="2.34.0-pre1" />
-    <PackageReference Include="Grpc.Tools" Version="2.34.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="5.0.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
+    <PackageReference Include="Grpc.Net.Common" Version="2.40.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.41.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
