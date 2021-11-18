@@ -2,8 +2,8 @@
 namespace TraderSys.FullStockTickerServer;
 internal static class DevelopmentModeCertificateHelper
 {
-
-    public static readonly X509Certificate2 Certificate = new X509Certificate2("server.pfx", "secretsquirrel");
+    // Please go through the procedure to create certificate from readme and include the certificate in the project
+    public static readonly X509Certificate2 Certificate = new X509Certificate2("certificate.pfx", "secretsquirrel");
 
     public static Task Validate(CertificateValidatedContext context)
     {

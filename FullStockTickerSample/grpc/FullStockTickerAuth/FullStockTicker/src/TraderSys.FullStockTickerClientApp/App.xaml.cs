@@ -16,7 +16,8 @@ public partial class App : Application
 
     private void ConfigureServices(ServiceCollection services)
     {
-        var clientCertificate = new X509Certificate2("client.pfx", "secretsquirrel");
+        // Please go through the procedure to create certificate from readme and include the certificate in the project
+        var clientCertificate = new X509Certificate2("certificate.pfx", "secretsquirrel");
 
         services.AddGrpcClient<FullStockTickerServer.Protos.FullStockTicker.FullStockTickerClient>("grpc", options =>
             {
