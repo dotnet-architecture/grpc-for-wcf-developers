@@ -16,21 +16,18 @@ public partial class App : Application
 
     private void ConfigureServices(ServiceCollection services)
     {
-        var clientCertificate = new X509Certificate2("client.pfx", "secretsquirrel");
-        var handler = new HttpClientHandler();
-        handler.ClientCertificates.Add(clientCertificate);
+        // Please go through the procedure to create certificate from readme and include the certificate in the project
+        var clientCertificate = new X509Certificate2("certificate.pfx", "secretsquirrel");
 
-        services.AddHttpClient("grpc").ConfigurePrimaryHttpMessageHandler(() => handler);
-
-        services.AddGrpcClient<FullStockTickerServer.Protos.FullStockTicker.FullStockTickerClient>(options =>
+        services.AddGrpcClient<FullStockTickerServer.Protos.FullStockTicker.FullStockTickerClient>("grpc", options =>
             {
                 options.Address = new Uri("https://localhost:5001");
             })
-            .ConfigureChannel((provider, channel) =>
+            .ConfigurePrimaryHttpMessageHandler(() =>
             {
-                var client = provider.GetRequiredService<IHttpClientFactory>().CreateClient("grpc");
-                channel.HttpClient = client;
-                channel.DisposeHttpClient = true;
+                var handler = new HttpClientHandler();
+                handler.ClientCertificates.Add(clientCertificate);
+                return handler;
             });
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();

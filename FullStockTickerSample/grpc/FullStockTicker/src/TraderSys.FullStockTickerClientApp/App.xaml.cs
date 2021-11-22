@@ -19,16 +19,10 @@ namespace TraderSys.FullStockTickerClientApp
         {
             services.AddHttpClient("grpc");
 
-            services.AddGrpcClient<FullStockTickerServer.Protos.FullStockTicker.FullStockTickerClient>(options =>
-                {
-                    options.Address = new Uri("https://localhost:5001");
-                })
-                .ConfigureChannel((provider, channel) =>
-                {
-                    var client = provider.GetRequiredService<IHttpClientFactory>().CreateClient("grpc");
-                    channel.HttpClient = client;
-                    channel.DisposeHttpClient = true;
-                });
+            services.AddGrpcClient<FullStockTickerServer.Protos.FullStockTicker.FullStockTickerClient>("grpc", options =>
+            {
+                options.Address = new Uri("https://localhost:5001");
+            });
             services.AddSingleton<MainWindow>();
             services.AddSingleton<MainWindowViewModel>();
         }
