@@ -1,12 +1,14 @@
 Follow the below steps to create Server Client Authentication certificate and include the same in server and client application
 
+1. Run the following command and capture the Thumbprint
 ```powershell
 New-SelfSignedCertificate -DnsName "localhost" -CertStoreLocation cert:\LocalMachine\My -NotAfter (Get-Date).AddYears(20) -FriendlyName "localhost" -KeyUsageProperty All -KeyUsage CertSign, CRLSign, DigitalSignature
 ```
-2. Replace the thumbprint with the above value and the Filepath in the following script
+2. Run this script to set the password to local variable
 ```powershell
  $mypwd = ConvertTo-SecureString -String "secretsquirrel" -Force -AsPlainText
 ```
+3. Replace the "The Thumbprint.." with the value captured in step 1 and the Filepath in the following script
 ```powershell
 Get-ChildItem -Path cert:\localMachine\my\"The thumbprint..." | Export-PfxCertificate -FilePath C:\certificate.pfx -Password $mypwd
 ```
