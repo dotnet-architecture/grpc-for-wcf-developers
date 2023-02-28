@@ -10,7 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.Configure<StockDataSettings>(builder.Configuration.GetSection("StockData"));
-
 builder.Services.AddGrpcClient<Stocks.StocksClient>((provider, options) =>
 {
     var settings = provider.GetRequiredService<IOptionsMonitor<StockDataSettings>>();
