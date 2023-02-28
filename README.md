@@ -1,10 +1,15 @@
 # GRPC for WCF Developers Sample Reference Application
 
-Sample .NET 6.0 GRPC reference application, powered by Microsoft, based on latest GRPC .NET packages and Docker containers.
+Sample .NET 7.0 GRPC reference application, powered by Microsoft, based on latest GRPC .NET packages and Docker containers.
 
+## Read the book
 
-## Updated for .NET 6
+The samples in this repository are meant to support the free eBook, [gRPC for WCF Developers](https://learn.microsoft.com/en-us/dotnet/architecture/grpc-for-wcf-developers/).
 
-grpc-for-wcf-developers is updated to .NET 6 "wave" of technologies. Not just compilation but also new recommended code and other new related versions with several significant changes.
+## Version
 
-**See more details in the [Release notes](https://github.com/dotnet-architecture/grpc-for-wcf-developers/wiki/Release-notes) wiki page**.
+The current version uses .NET 7 and the latest gRPC libraries as of early 2023.
+
+## Release Notes
+
+You'll find [additional release notes for major changes in the wiki](https://github.com/dotnet-architecture/grpc-for-wcf-developers/wiki/Release-notes).
