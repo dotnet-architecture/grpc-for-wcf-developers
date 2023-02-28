@@ -21,7 +21,7 @@ namespace TraderSys.FullStockTickerClientApp
 
             services.AddGrpcClient<FullStockTickerServer.Protos.FullStockTicker.FullStockTickerClient>("grpc", options =>
             {
-                options.Address = new Uri("https://localhost:5001");
+                options.Address = new Uri("https://localhost:61282");
             });
             services.AddSingleton<MainWindow>();
             services.AddSingleton<MainWindowViewModel>();
